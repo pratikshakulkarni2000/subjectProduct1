@@ -43,6 +43,7 @@ export class ProductFormComponent implements OnInit {
       this._prodService.createProd(obj).subscribe({
         next : data => {
           console.log(data);
+          this.prodForm.reset()
           
           this._prodService.setNewPro({...obj,id : data.name})
         },
