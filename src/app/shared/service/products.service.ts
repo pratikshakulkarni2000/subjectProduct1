@@ -23,9 +23,9 @@ export class ProductsService {
   }
 
    private editProSub$ : Subject<Ipro> = new Subject<Ipro>()
-  editProObs$ : Observable<Ipro> = this.newProdSub$.asObservable()
+  editProObs$ : Observable<Ipro> = this.editProSub$.asObservable()
   setEditPro( p : Ipro) {
-    this.newProdSub$.next(p)
+    this.editProSub$.next(p)
   }
 
 
@@ -65,7 +65,7 @@ export class ProductsService {
   updatePro(update : Ipro) : Observable<Ipro>{
     let update_url = `${this.BASE_URL}/products/${update.id}.json`
     return this._httpClient.patch<Ipro>(update_url,update)
-  }
+  }                   
 
 
 }
